@@ -42,13 +42,14 @@
             bottom: 0;
             display: flex;
             width: 100vw;
-            height: 60px;
             background: #f4f4f4;
             border-top: 1px solid #ccc;
             list-style: none;
+            padding-bottom: env(safe-area-inset-bottom, 0);
         }
 
         li {
+            height: 60px;
             flex: 0 0 50%;
             display: flex;
             justify-content: center;

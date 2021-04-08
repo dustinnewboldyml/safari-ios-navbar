@@ -1,3 +1,5 @@
+// v1
+
 self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open("safari-bottom-navbar").then(function (cache) {
