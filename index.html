@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="manifest" href="/manifest.json">
+    <title>Safari iOS Bottom Navbar</title>
+
+    <link rel="apple-touch-icon" href="/icon-512.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="/icon-128.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            font-size: 20px;
+            line-height: 1.3em;
+        }
+
+        section {
+            width: 100%;
+            height: calc(100vh - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bottom-navbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            width: 100vw;
+            height: 60px;
+            background: #f4f4f4;
+            border-top: 1px solid #ccc;
+            list-style: none;
+        }
+
+        li {
+            flex: 0 0 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li.active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <section class="scroll-down">
+        <span>
+            First, we need to hide Safari's default UI. To do this, we need to scroll down. The intention here is to have the navbar displayed below attached to the bottom of the phone.
+        </span>
+    </section>
+    <section class="scroll-down">
+        <span>
+            From here, assuming that Safari's bottom navigation bar is hidden and our app navbar is still visible, you should be able to attempt to tap any option within our bottom navbar. What you should see is that Safari will display their navbar instead of performing the associated action.
+        </span>
+    </section>
+
+
+    <ul class="bottom-navbar">
+        <li id="page-1" class="active">
+            Option 1
+        </li>
+        <li id="page-2">
+            Option 2
+        </li>
+    </ul>
+
+
+    <script>
+        const p1 = document.getElementById('page-1');
+        const p2 = document.getElementById('page-2');
+
+        p1.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            p1.classList.add('active');
+            p2.classList.remove('active');
+        });
+
+        p2.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            p2.classList.add('active');
+            p1.classList.remove('active');
+        });
+
+        if ( 'serviceWorker' in navigator ) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
+</body>
+</html>

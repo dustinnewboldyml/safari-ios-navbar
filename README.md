@@ -1,2 +1,3 @@
-# safari-ios-navbar
-An example of a bottom navbar UX within Safari on iOS
+# Safari iOS Bottom Navbar
+
+This project is to demonstrate the usage of the bottom navbar within Safari on iOS.
